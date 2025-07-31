@@ -26,7 +26,7 @@ def main():
     words = json_data["words"]
 
     job_text = ""
-    with open("sample_job_description/job_description.txt", "r", encoding="utf8") as f:
+    with open("job_description/job_description.txt", "r", encoding="utf8") as f:
         job_text = f.read()
 
     job_text = job_text.lower()
@@ -44,10 +44,11 @@ def main():
 
     counter = Counter(counter_dict)
 
-    match_score, missing_terms = get_match_score(counter)
+    match_score, missing_terms, most_common = get_match_score(counter)
 
     print(f"Match Score: {match_score}%")
     print(f"Missing terms: {missing_terms}")
+    print(f"Most common terms: {most_common}")
 
 def convert_resume_pdf_to_text(file_path: str):
     """Convert a resume pdf file to a text file"""
@@ -85,7 +86,7 @@ def get_match_score(counter: Counter):
                 missing_terms.append(count)
 
     match_score = num/total * 100
-    return match_score, missing_terms
+    return match_score, missing_terms, most_common
 
 if __name__== "__main__":
     main()
