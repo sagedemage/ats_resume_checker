@@ -53,13 +53,18 @@ def main():
     resume_text = resume_text.lower()
 
     num = 0
+    missing_terms = []
     for count in most_common:
         if count[0] in resume_text:
             num += 1
+        else:
+            missing_terms.append(count[0])
+
 
     print(f"{most_common}\n")
     score = num/10
     print(f"{score*100}%")
+    print(f"Missing terms: {missing_terms}")
 
 def convert_resume_pdf_to_text(file_path: str):
     """Convert a resume pdf file to a text file"""
