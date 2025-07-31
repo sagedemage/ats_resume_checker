@@ -24,7 +24,8 @@
         "Source Code Management",
         "Docker Swarm",
         "Docker Engine",
-        "Cloud Security"
+        "Cloud Security",
+        "Secret Clearance"
     ],
 
     "words": [
@@ -125,6 +126,10 @@
         "DevSecOps",
         "Troubleshooting",
         "Systems",
-        "System"
+        "System",
+        "Secret",
+        "Polygraph",
+        "Poly",
+        "TS/SCI"
     ]
 }
