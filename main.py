@@ -44,33 +44,15 @@ def main():
 
     counter = Counter(counter_dict)
 
-    most_common = counter.most_common(10)
+    match_score, missing_terms = get_match_score(counter)
 
-    resume_text = ""
-    with open("output/resume.txt", "r", encoding="utf8") as f:
-        resume_text = f.read()
-
-    resume_text = resume_text.lower()
-
-    num = 0
-    missing_terms = []
-    for count in most_common:
-        if count[0] in resume_text:
-            num += 1
-        else:
-            missing_terms.append(count[0])
-
-
-    print(f"{most_common}\n")
-    score = num/10
-    print(f"{score*100}%")
+    print(f"Match Score: {match_score}%")
     print(f"Missing terms: {missing_terms}")
 
 def convert_resume_pdf_to_text(file_path: str):
     """Convert a resume pdf file to a text file"""
     try:
         reader = PdfReader(file_path)
-        #number_of_pages = len(reader.pages)
         page = reader.pages[0]
         text = page.extract_text()
 
@@ -80,6 +62,30 @@ def convert_resume_pdf_to_text(file_path: str):
         print("File not found")
     except PdfStreamError:
         print("Must be a pdf file")
+
+def get_match_score(counter: Counter):
+    """Get the match score the resume"""
+    most_common = counter.most_common(20)
+
+    resume_text = ""
+    with open("output/resume.txt", "r", encoding="utf8") as f:
+        resume_text = f.read()
+
+    resume_text = resume_text.lower()
+
+    num = 0
+    total = 0
+    missing_terms = []
+    for count in most_common:
+        if count[1] > 0:
+            total += 1
+            if count[0] in resume_text:
+                num += 1
+            else:
+                missing_terms.append(count)
+
+    match_score = num/total * 100
+    return match_score, missing_terms
 
 if __name__== "__main__":
     main()
