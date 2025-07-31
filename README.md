@@ -1,2 +1,2 @@
-# resume_pdf_to_text
-CLI program to convert resume pdf file to text
+# ats_resume_checker
+An ATS resume checker cli program to check your resume with a job description.
