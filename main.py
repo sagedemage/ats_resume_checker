@@ -50,12 +50,12 @@ def main():
     phrase_match_score, missing_phrases, most_common_phrases = get_match_score(phrases_counter)
 
     match_score = (phrase_match_score + word_match_score) / 2
-    missing_terms = missing_words + missing_phrases
-    most_common = most_common_words + most_common_phrases
 
-    print(f"Match Score: {match_score}%")
-    print(f"Missing terms: {missing_terms}")
-    print(f"Most common terms: {most_common}")
+    print(f"Match Score: {match_score}%\n")
+    print(f"Missing words: {missing_words}")
+    print(f"Missing phrases: {missing_phrases}\n")
+    print(f"Most common words: {most_common_words}")
+    print(f"Most common phrases: {most_common_phrases}")
 
 def convert_resume_pdf_to_text(file_path: str):
     """Convert a resume pdf file to a text file"""
