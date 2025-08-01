@@ -33,18 +33,25 @@ def main():
 
     job_text_words = re.findall(r'\w+', job_text)
 
-    counter_dict = {}
-    for phrase in phrases:
-        count = job_text.count(phrase.lower())
-        counter_dict[phrase.lower()] = count
-
+    counter_dict_words = {}
     for word in words:
         count = job_text_words.count(word.lower())
-        counter_dict[word.lower()] = count
+        counter_dict_words[word.lower()] = count
 
-    counter = Counter(counter_dict)
+    counter_dict_phrases = {}
+    for phrase in phrases:
+        count = job_text.count(phrase.lower())
+        counter_dict_phrases[phrase.lower()] = count
 
-    match_score, missing_terms, most_common = get_match_score(counter)
+    words_counter = Counter(counter_dict_words)
+    phrases_counter = Counter(counter_dict_phrases)
+
+    word_match_score, missing_words, most_common_words = get_match_score(words_counter)
+    phrase_match_score, missing_phrases, most_common_phrases = get_match_score(phrases_counter)
+
+    match_score = (phrase_match_score + word_match_score) / 2
+    missing_terms = missing_words + missing_phrases
+    most_common = most_common_words + most_common_phrases
 
     print(f"Match Score: {match_score}%")
     print(f"Missing terms: {missing_terms}")
