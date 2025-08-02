@@ -92,7 +92,10 @@ def get_match_score(counter: Counter):
             else:
                 missing_terms.append(count)
 
-    match_score = num/total * 100
+    match_score = 0
+    if total != 0:
+        match_score = num/total * 100
+
     return match_score, missing_terms, most_common
 
 if __name__== "__main__":
