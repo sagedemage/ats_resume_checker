@@ -149,7 +149,6 @@
         "VMware",
         "Ubuntu", 
         "CentOS", 
-        "RedHat",
         "AWS Linux",
         "Podman",
         "OpenShift", 
@@ -165,6 +164,7 @@
         "DOORS",
         "SQL", 
         "Postgres",
-        "DR"
+        "DR",
+        "RHEL"
     ]
 }
