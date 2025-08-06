@@ -15,7 +15,7 @@
         "CompTIA Security+",
         "CompTIA Linux+",
         "CompTIA Cloud+",
-        "Load Balancers",
+        "Load Balancing",
         "Container Orchestration", 
         "Automation tools",
         "Amazon Web Services",
@@ -37,7 +37,10 @@
         "VMware ESXi",
         "Red Hat Linux",
         "Red Hat",
-        "Google Cloud"
+        "Google Cloud",
+        "Windows Server",
+        "Connect: Direct",
+        "Scripting Languages"
     ],
 
     "words": [
@@ -166,6 +169,8 @@
         "SQL", 
         "Postgres",
         "DR",
-        "RHEL"
+        "RHEL",
+        "ServiceNow",
+        "Connect:Direct"
     ]
 }
