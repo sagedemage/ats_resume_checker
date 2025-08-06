@@ -51,6 +51,7 @@ def main():
     phrase_match_score, missing_phrases, most_common_phrases = get_match_score(phrases_counter)
 
     match_score = (phrase_match_score + word_match_score) / 2
+    match_score = round(match_score, 2)
 
     print(f"Match Score: {match_score}%\n")
     print(f"Missing words: {missing_words}")
