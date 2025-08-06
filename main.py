@@ -6,16 +6,17 @@ from collections import Counter
 import re
 
 def main():
-    if len(sys.argv) < 2:
+    if len(sys.argv) < 3:
         print("Provide the path of the resume pdf file!")
         print("For example")
-        print("python .\\main.py .\\sample_resume\\Resume.pdf")
+        print("python main.py sample_resume\\Resume.pdf sample_job_descriptions\\bae_systems_devops_engineer.txt")
         exit()
 
     args = sys.argv
-    file_path = args[1]
+    resume_file_path = args[1]
+    job_description_file_path = args[2]
 
-    convert_resume_pdf_to_text(file_path=file_path)
+    convert_resume_pdf_to_text(file_path=resume_file_path)
 
     json_data = {}
 
@@ -26,7 +27,7 @@ def main():
     words = json_data["words"]
 
     job_text = ""
-    with open("job_description/job_description.txt", "r", encoding="utf8") as f:
+    with open(job_description_file_path, "r", encoding="utf8") as f:
         job_text = f.read()
 
     job_text = job_text.lower()
