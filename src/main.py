@@ -1,16 +1,19 @@
 from pypdf import PdfReader
 from pypdf.errors import PdfStreamError
 from collections import Counter
-from typing import Any
+from lib import Words, Phrases
 import re
 import sys
 import json
+
 
 def main():
     if len(sys.argv) < 3:
         print("Provide the path of the resume pdf file!")
         print("For example")
-        print("python main.py sample_resume\\Resume.pdf sample_job_descriptions\\bae_systems_devops_engineer.txt")
+        print(
+            "python src\\main.py sample_resume\\Resume.pdf sample_job_descriptions\\bae_systems_devops_engineer.txt"
+        )
         exit()
 
     args = sys.argv
@@ -33,7 +36,7 @@ def main():
 
     job_text = job_text.lower()
 
-    job_text_words = re.findall(r'\w+', job_text)
+    job_text_words = re.findall(r"\w+", job_text)
 
     counter_dict_words = {}
     for word in words:
@@ -48,7 +51,9 @@ def main():
     words_counter = Counter(counter_dict_words)
     phrases_counter = Counter(counter_dict_phrases)
 
-    match_score, words, phrases = get_match_score(words_counter, phrases_counter)
+    match_score, words, phrases = get_match_score(
+        words_counter, phrases_counter
+    )
     match_score = round(match_score, 2)
 
     print(f"Match Score: {match_score}%\n")
@@ -56,6 +61,7 @@ def main():
     print(f"Missing phrases: {phrases.missing}\n")
     print(f"Most common words: {words.most_common}")
     print(f"Most common phrases: {phrases.most_common}")
+
 
 def convert_resume_pdf_to_text(file_path: str):
     """Convert a resume pdf file to a text file"""
@@ -71,15 +77,6 @@ def convert_resume_pdf_to_text(file_path: str):
     except PdfStreamError:
         print("Must be a pdf file")
 
-class Words:
-    def __init__(self, missing_words: list, most_common_words: list[tuple[Any, int]]):
-        self.missing = missing_words 
-        self.most_common = most_common_words
-
-class Phrases:
-    def __init__(self, missing_phrases: list, most_common_phrases: list[tuple[Any, int]]):
-        self.missing = missing_phrases 
-        self.most_common = most_common_phrases
 
 def get_match_score(words_counter: Counter, phrases_counter: Counter):
     """Get the match score of the resume"""
@@ -102,7 +99,7 @@ def get_match_score(words_counter: Counter, phrases_counter: Counter):
                 num += 2
             else:
                 missing_words.append(count)
-    
+
     missing_phrases = []
     for count in most_common_phrases:
         if count[1] > 0:
@@ -114,12 +111,13 @@ def get_match_score(words_counter: Counter, phrases_counter: Counter):
 
     match_score = 0
     if total != 0:
-        match_score = num/total * 100
+        match_score = num / total * 100
 
     words = Words(missing_words, most_common_words)
     phrases = Phrases(missing_phrases, most_common_phrases)
 
     return match_score, words, phrases
 
-if __name__== "__main__":
+
+if __name__ == "__main__":
     main()

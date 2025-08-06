@@ -2,3 +2,4 @@
 output/
 sample_resume/
 sample_job_descriptions/
+__pycache__/

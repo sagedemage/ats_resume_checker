@@ -20,3 +20,8 @@ Use the program
 ```
 python main.py sample_resume\Resume.pdf sample_job_descriptions\bae_systems_devops_engineer.txt
 ```
+
+Format the code
+```
+black src/*.py
+```
