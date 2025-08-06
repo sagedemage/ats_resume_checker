@@ -1,3 +1,5 @@
+"""Main Program running the ATS Resume Checker"""
+
 from pypdf import PdfReader
 from pypdf.errors import PdfStreamError
 from collections import Counter
@@ -12,7 +14,7 @@ def main():
         print("Provide the path of the resume pdf file!")
         print("For example")
         print(
-            "python src\\main.py sample_resume\\Resume.pdf sample_job_descriptions\\bae_systems_devops_engineer.txt"
+            "python src\\main.py resume\\Resume.pdf job_descriptions\\job.txt"
         )
         exit()
 

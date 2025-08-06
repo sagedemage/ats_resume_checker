@@ -16,12 +16,17 @@ Install dependencies
 pip install -r requirements.txt
 ```
 
-Use the program
+Run the program
 ```
-python main.py sample_resume\Resume.pdf sample_job_descriptions\bae_systems_devops_engineer.txt
+python src\main.py resume\Resume.pdf .\job_descriptions\bae_systems_devops_engineer.txt
 ```
 
-Format the code
+Format the codebase
 ```
 black src/*.py
+```
+
+Lint the codebase
+```
+pylint src/*.py
 ```

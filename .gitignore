@@ -1,5 +1,5 @@
 .venv/
 output/
-sample_resume/
-sample_job_descriptions/
+resume/
+job_descriptions/
 __pycache__/

@@ -1,3 +1,8 @@
+"""
+Library Module for the Words and Phrases classes
+for storing results related to most common terms
+"""
+
 from typing import Any
 
 

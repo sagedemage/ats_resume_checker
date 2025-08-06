@@ -1,1 +1,1 @@
-cp C:\Users\salsa\Documents\Industry\Resume\Resume.pdf .\sample_resume\Resume.pdf
+cp C:\Users\salsa\Documents\Industry\Resume\Resume.pdf .\resume\Resume.pdf
