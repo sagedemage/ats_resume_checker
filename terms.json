@@ -40,7 +40,24 @@
         "Google Cloud",
         "Windows Server",
         "Connect: Direct",
-        "Scripting Languages"
+        "Scripting Languages",
+        "Windows Administration",
+        "Virtual Desktop Infrastructure",
+        "Microsoft Certification",
+        "Technical Support",
+        "Security Protocols",
+        "Vulnerability Assessments",
+        "Group Policy",
+        "Group Policies",
+        "IT Support Tickets",
+        "IT Support",
+        "Systems Administration",
+        "Virtualized Environments",
+        "Server Replication",
+        "VMware ESXi",
+        "Assured Compliance Assessment Solution",
+        "System Center Configuration Manager",
+        "Host Based Security System"
     ],
 
     "words": [
@@ -171,6 +188,19 @@
         "DR",
         "RHEL",
         "ServiceNow",
-        "Connect:Direct"
+        "Connect:Direct",
+        "VDI",
+        "MCSA",
+        "MCITP",
+        "RAID",
+        "DC",
+        "AHV",
+        "Hyper-V",
+        "ACAS",
+        "SCCM",
+        "HBSS",
+        "Netapp",
+        "IAVM",
+        "STIG"
     ]
 }
