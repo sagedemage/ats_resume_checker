@@ -30,7 +30,6 @@ def main():
         json_data = json.load(file)
 
     phrases = json_data["phrases"]
-    words = json_data["words"]
 
     job_text = ""
     with open(job_description_file_path, "r", encoding="utf8") as f:
@@ -40,17 +39,26 @@ def main():
 
     job_text_words = re.findall(r"\w+", job_text)
 
-    counter_dict_words = {}
-    for word in words:
-        count = job_text_words.count(word.lower())
-        counter_dict_words[word.lower()] = count
+    temp_job_terms = []
+
+    not_allow_words = json_data["not_allow_words"]
+
+    for word in job_text_words:
+        if (
+            word not in not_allow_words
+            and word.isnumeric() == False
+            and len(word) > 1
+        ):
+            temp_job_terms.append(word)
+
+    job_text_words = temp_job_terms
 
     counter_dict_phrases = {}
     for phrase in phrases:
         count = job_text.count(phrase.lower())
         counter_dict_phrases[phrase.lower()] = count
 
-    words_counter = Counter(counter_dict_words)
+    words_counter = Counter(job_text_words)
     phrases_counter = Counter(counter_dict_phrases)
 
     match_score, words, phrases = get_match_score(
@@ -84,6 +92,20 @@ def get_match_score(words_counter: Counter, phrases_counter: Counter):
     """Get the match score of the resume"""
     most_common_words = words_counter.most_common(20)
     most_common_phrases = phrases_counter.most_common(20)
+
+    temp_most_common_words = []
+    for word in most_common_words:
+        if word[1] > 2:
+            temp_most_common_words.append(word)
+
+    most_common_words = temp_most_common_words
+
+    temp_most_common_phrases = []
+    for phrase in most_common_phrases:
+        if phrase[1] > 0:
+            temp_most_common_phrases.append(phrase)
+
+    most_common_phrases = temp_most_common_phrases
 
     resume_text = ""
     with open("output/resume.txt", "r", encoding="utf8") as f:
