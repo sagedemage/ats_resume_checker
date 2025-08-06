@@ -41,11 +41,11 @@ def main():
 
     temp_job_terms = []
 
-    not_allow_words = json_data["not_allow_words"]
+    not_allowed_words = json_data["not_allowed_words"]
 
     for word in job_text_words:
         if (
-            word not in not_allow_words
+            word not in not_allowed_words
             and word.isnumeric() is False
             and len(word) > 1
         ):

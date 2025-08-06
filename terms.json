@@ -60,7 +60,7 @@
         "Host Based Security System"
     ],
 
-    "not_allow_words": [
+    "not_allowed_words": [
         "at",
         "of",
         "and",
