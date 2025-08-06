@@ -46,7 +46,7 @@ def main():
     for word in job_text_words:
         if (
             word not in not_allow_words
-            and word.isnumeric() == False
+            and word.isnumeric() is False
             and len(word) > 1
         ):
             temp_job_terms.append(word)
